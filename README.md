@@ -1,6 +1,8 @@
 # mediakit
 http://mediakit.education
 
+Demo: https://youtu.be/1EJf5ur1sM4
+
 Digitalisierung von Klassenzimmern -
 
 einfach, unabhängig, zuverlässig, kostengünstig
