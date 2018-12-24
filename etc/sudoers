@@ -1,0 +1,75 @@
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root	ALL=(ALL:ALL) ALL
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/openbrowser.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/closebrowser.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/openscreencast.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/stopSamba.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/startSamba.sh
+mk     ALL=(ALL)       NOPASSWD:/bin/mount
+mk     ALL=(ALL)       NOPASSWD:/bin/umount
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/tee
+mk     ALL=(ALL)       NOPASSWD:/sbin/shutdown
+mk     ALL=(ALL)       NOPASSWD:/usr/sbin/service
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/unblockInternet.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/blockInternet.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/unblockIP.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/blockIP.sh
+mk     ALL=(ALL)       NOPASSWD:/sbin/iptables
+mk     ALL=(ALL)       NOPASSWD:/sbin/unblockMediakitIP.sh
+mk     ALL=(ALL)       NOPASSWD:/bin/chmod
+mk     ALL=(ALL)       NOPASSWD:/bin/mkdir
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/activateFileUpload.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/activateImageUpload.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/stopMkServer.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/activateFileBrowser.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/activateFileManager.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/activateWorkspace.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/startnode.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/startWorkspace.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/startFileBrowser.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/block.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/unblock.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/loginscript.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/sbin/arp
+mk     ALL=(ALL)       NOPASSWD:/bin/ip
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/useUSBWifi.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/useInternalWifi.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/autoMountUSB.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/autoUmountUSB.sh
+mk     ALL=(ALL)       NOPASSWD:/etc/init.d/autofs restart
+mk     ALL=(ALL)       NOPASSWD:/bin/systemctl restart autofs.service
+mk     ALL=(ALL)       NOPASSWD:/usr/sbin/service /etc/init.d/autofs *
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/mirrorDisplays.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/collabDraw.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/bin/refreshNetwork.sh
+mk     ALL=(ALL)       NOPASSWD:/bin/systemctl restart networking.service
+mk     ALL=(ALL)       NOPASSWD:/sbin/ifdown
+mk     ALL=(ALL)       NOPASSWD:/sbin/ifup
+mk     ALL=(ALL)       NOPASSWD:/sbin/info.sh
+mk     ALL=(ALL)       NOPASSWD:/usr/sbin/service /etc/init.d/networking *
+mk     ALL=(ALL)       NOPASSWD:/usr/sbin/service /etc/init.d/hostapd *
+mk     ALL=(ALL)       NOPASSWD:/bin/systemctl restart hostapd.service
+# Allow members of group sudo to execute any command
+%sudo	ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "#include" directives:
+
+#includedir /etc/sudoers.d
