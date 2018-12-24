@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ "$2" = "" ]; then
+   echo "Usage: $0 [source_directory] [target_file.sb] [ -d ]"
+   exit 1
+fi
+
+
+if [ ! -d "$1" ]; then
+   echo "Not a directory: $1"
+   exit 2
+fi
+
+if [ -e "$2" ]; then
+   echo "Target exists: $2"
+   exit 3
+fi
+
+if [ "$3" = "-d" ]; then
+   KEEP="-keep-as-directory"
+else
+   KEEP=""
+fi
+
+mksquashfs "$1" "$2" -comp xz -b 512K $KEEP
