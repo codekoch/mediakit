@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Internet sperren
+Comment=Blockiert das Internet für verbundene Geräte
+Icon=/home/mk/Bilder/mediakit/blockInternet_s.png
+Exec=/usr/bin/block.sh
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;
+Path=
+StartupNotify=false

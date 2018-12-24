@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Filesharing
+Comment=Aktiviert das den FileBrowser
+Icon=/home/mk/Bilder/mediakit/share_s.png
+Exec=/usr/bin/activateFileBrowser.sh
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;
+Name[de_DE]=Filesharing
+Path=
+StartupNotify=false

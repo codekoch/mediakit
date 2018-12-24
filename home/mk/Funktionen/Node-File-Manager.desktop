@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Workspace (LAN)
+Comment=
+Exec=/home/mk/scripts/startNodeFileManager.sh
+Icon=/home/mk/Bilder/mediakit/workspace_s.png
+Path=
+Terminal=true
+StartupNotify=true

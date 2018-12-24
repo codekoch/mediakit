@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Workspace (WLAN)
+Comment=Aktiviert den Workspace in /home/mk/Öffentlich
+Icon=/home/mk/Bilder/mediakit/workspace_s.png
+Exec=/usr/bin/activateWorkspace.sh
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;
+Path=
+StartupNotify=false

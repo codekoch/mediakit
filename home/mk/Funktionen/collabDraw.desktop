@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=CollabDraw
+Comment=Aktiviert das kooperative Whiteboard
+Icon=/home/mk/Bilder/mediakit/collabDraw_s.png
+Exec=/usr/bin/collabDraw.sh
+Type=Application
+Terminal=false
+Categories=None;
+StartupNotify=true
+Terminal=false
+MimeType=inode/directory;
+
+Name[de_DE]=Cooperative Whiteboard
+Path=

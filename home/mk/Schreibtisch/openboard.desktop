@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Link
+Name=OpenBoard
+Icon=/opt/openboard/OpenBoard.png
+URL=/usr/share/applications/openboard.desktop
+Comment=

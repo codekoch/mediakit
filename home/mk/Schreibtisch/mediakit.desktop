@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=mediakit Funktionen
+Comment=mediakit Funktionen
+#Icon=gtk-execute
+Icon=preferences-system
+Exec=/usr/bin/thunar /home/mk/Funktionen/
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;
+Path=
+StartupNotify=false

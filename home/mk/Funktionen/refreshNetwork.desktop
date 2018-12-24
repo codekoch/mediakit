@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Netzwerk Reset
+Comment=Initialisiert alle Netzwerkeinstellungen
+Icon=
+Exec=sudo /usr/bin/refreshNetwork.sh
+Type=Application
+Encoding=UTF-8
+Terminal=true
+Categories=None;
+Path=
+StartupNotify=false
