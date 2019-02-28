@@ -30,6 +30,59 @@ sudo  sed -i 's/wps_pin any.*$/wps_pin any '$n1$n2$n3'00000/g' /opt/lazycast/all
 if [ -z $wlanModul1 ]; then
 ### use internal wlan device
 wlanModul="wlan0"
+# setting up p2p-wlan
+mac="`sudo /sbin/ifconfig eth0 | grep 'ether ' | awk '{ print $2}'`"
+mac2="`echo "$mac" | sed 's/\://g'`"
+wlanssid="MK-"$mac2
+sudo  sed -i "s/device_name=.*$/device_name=$wlanssid/g" /etc/wpa_supplicant/wpa_supplicant.conf
+
+
+ain="$(sudo wpa_cli interface)"
+echo "${ain}"
+if [ `echo "${ain}" | grep -c "p2p-wl"` -gt 0 ] 
+then
+        echo "already on"
+
+else
+        sudo wpa_cli p2p_find type=progessive
+        sudo wpa_cli set device_name $wlanssid
+        sudo wpa_cli set device_type 7-0050F204-1
+        sudo wpa_cli set p2p_go_ht40 1
+        sudo wpa_cli wfd_subelem_set 0 00060151022a012c
+        sudo wpa_cli wfd_subelem_set 1 0006000000000000
+        sudo wpa_cli wfd_subelem_set 6 000700000000000000
+        perentry="$(wpa_cli list_networks | grep "\[DISABLED\]\[P2P-PERSISTENT\]" | tail -1)"
+        echo "${perentry}"
+        if [ `echo "${perentry}" | grep -c "P2P-PERSISTENT"`  -gt 0 ] 
+        then
+                networkid=${perentry%%D*}
+                perstr="=${networkid}"
+        else
+                perstr=""
+        fi
+        echo "${perstr}"
+        while [ `echo "${ain}" | grep -c "p2p-wl"`  -lt 1 ] 
+        do
+                while [ `echo "${ain}" | grep -c "p2p-wl"`  -lt 1 ]
+                do
+                        sudo wpa_cli p2p_group_add persistent$perstr freq=5
+                        sleep 2
+                        ain="$(sudo wpa_cli interface)"
+                        echo "$ain"
+                done
+                sleep 5
+                ain="$(sudo wpa_cli interface)"
+                echo "$ain"
+        done
+
+ fi
+
+p2pinterface=$(echo "${ain}" | grep "p2p-wl" | grep -v "interface")
+
+sudo  sed -i 's/interface p2p-wlan0.*$/interface '$p2pinterface'/g' /etc/dhcpcd.conf.intern
+sudo  sed -i 's/interface=p2p-wlan0.*$/interface='$p2pinterface'/g' /etc/dnsmasq.conf.intern
+sudo  sed -i 's/sudo wpa_cli -ip2p-wlan0.*$/sudo wpa_cli -i'$p2pinterface' wps_pin any '$n1$n2$n3'00000/g' /opt/lazycast/allnew.sh
+sudo ifconfig $p2pinterface 192.168.173.1        
 sudo  sed -i 's/wpa_passphrase=.*$/wpa_passphrase=mediakit'$n1$n2$n3'/g' /etc/hostapd/hostapd.conf.intern
 sudo cp /etc/hostapd/hostapd.conf.intern /etc/hostapd/hostapd.conf
 sudo cp /etc/network/interfaces.intern /etc/network/interfaces
