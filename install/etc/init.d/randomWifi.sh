@@ -83,6 +83,7 @@ sudo  sed -i 's/interface p2p-wlan0.*$/interface '$p2pinterface'/g' /etc/dhcpcd.
 sudo  sed -i 's/interface=p2p-wlan0.*$/interface='$p2pinterface'/g' /etc/dnsmasq.conf.intern
 sudo  sed -i 's/sudo wpa_cli -ip2p-wlan0.*$/sudo wpa_cli -i'$p2pinterface' wps_pin any '$n1$n2$n3'00000/g' /opt/lazycast/allnew.sh
 sudo ifconfig $p2pinterface 192.168.173.1        
+sudo ifconfig wlan0 192.168.173.1
 sudo  sed -i 's/wpa_passphrase=.*$/wpa_passphrase=mediakit'$n1$n2$n3'/g' /etc/hostapd/hostapd.conf.intern
 sudo cp /etc/hostapd/hostapd.conf.intern /etc/hostapd/hostapd.conf
 sudo cp /etc/network/interfaces.intern /etc/network/interfaces
