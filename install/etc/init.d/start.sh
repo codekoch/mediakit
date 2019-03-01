@@ -35,7 +35,7 @@
 #sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE
 # Wait for ip 
 while [ -z $ipset ]; do
-ipset="`sudo ifconfig | grep -i 'inet 1.1.1.1'`"
+ipset="`sudo ifconfig | grep -i 'inet 1.1.1.1' | awk '{print $2}'` "
 done
 /etc/init.d/info.sh
 # Loopback zulassen

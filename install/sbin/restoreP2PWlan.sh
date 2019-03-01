@@ -45,7 +45,7 @@ else
 
 fi
 p2pinterface=$(echo "${ain}" | grep "p2p-wl" | grep -v "interface")
-sudo  sed -i 's/interface p2p-wlan0.*$/interface '$p2pinterface'/g' /etc/dhcpcd.conf
+#sudo  sed -i 's/interface p2p-wlan0.*$/interface '$p2pinterface'/g' /etc/dhcpcd.conf
 sudo  sed -i 's/interface=p2p-wlan0.*$/interface='$p2pinterface'/g' /etc/dnsmasq.conf
 #sudo  sed -i 's/sudo wpa_cli -ip2p-wlan0.*$/sudo wpa_cli -i'$p2pinterface' wps_pin any '$pin'00000/g' /opt/lazycast/alln$
 sudo ifconfig $p2pinterface 192.168.173.1
