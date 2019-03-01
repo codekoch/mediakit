@@ -52,7 +52,7 @@ else
  sudo cp /etc/dnsmasq.conf.usb /etc/dnsmasq.conf
 fi
 sudo  sed -i 's/wps_pin any.*$/wps_pin any '$n1$n2$n3'00000/g' /opt/lazycast/all.sh
-sudo  sed -i 's/wps_pin any.*$/wps_pin any '$n1$n2$n3'00000/g' /opt/lazycast/allnew.sh
+sudo  sed -i 's/pin=.*$/pin="'$n1$n2$n3'00000"/g' /opt/lazycast/allnew.sh
 sudo /sbin/iptables -F
 sudo /sbin/iptables -X
 sudo /sbin/iptables -t nat -F

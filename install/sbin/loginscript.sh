@@ -10,4 +10,4 @@ if ! [ -z $wlanModul1 ]; then
 cd /opt/lazycast
 ./allnew.sh &
 fi
-zenity --info --text="GO!" --timeout=8 2> /dev/null  &
+# zenity --info --text="GO!" --timeout=8 2> /dev/null  &
