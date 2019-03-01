@@ -15,7 +15,6 @@ n3="`shuf -i0-9 -n1`"
 sudo  sed -i 's/wpa_passphrase=.*$/wpa_passphrase=mediakit'$n1$n2$n3'/g' /etc/hostapd/hostapd.conf.usb
 sudo  sed -i 's/wpa_passphrase=.*$/wpa_passphrase=mediakit'$n1$n2$n3'/g' /etc/hostapd/hostapd.conf.intern
 sudo  sed -i 's/pin=.*$/pin="'$n1$n2$n3'"/g' /etc/init.d/info.sh
-sudo  sed -i 's/pin=.*$/pin="'$n1$n2$n3'"/g' /etc/init.d/info.sh
 
 # set ssid from eth0 mac adress
 mac="`sudo /sbin/ifconfig eth0 | grep 'ether ' | awk '{ print $2}'`"
@@ -26,6 +25,11 @@ sudo  sed -i 's/wlanssid=.*$/wlanssid="'$wlanssid'"/g' /etc/init.d/info.sh
 
 # check if we have two wlan devices
 wlanModul1="`ip link show | grep -i 'wlan1' | awk '{print $2}' | sed 's/://g'`"
+
+sudo service dhcpcd stop
+sudo service dnsmasq stop
+sudo service hostapd stop
+
 
 if [ -z $wlanModul1 ]; then
 ### only 1 detected --> use internal wlan device
@@ -81,7 +85,7 @@ sudo  sed -i 's/interface p2p-wlan0.*$/interface '$p2pinterface'/g' /etc/dhcpcd.
 sudo  sed -i 's/interface=p2p-wlan0.*$/interface='$p2pinterface'/g' /etc/dnsmasq.conf.intern
 sudo  sed -i 's/sudo wpa_cli -ip2p-wlan0.*$/sudo wpa_cli -i'$p2pinterface' wps_pin any '$n1$n2$n3'00000/g' /opt/lazycast/allnew.sh
 sudo ifconfig $p2pinterface 192.168.173.1        
-sudo ifconfig wlan0 192.168.173.1
+sudo ifconfig wlan0 1.1.1.1
 sudo  sed -i 's/wpa_passphrase=.*$/wpa_passphrase=mediakit'$n1$n2$n3'/g' /etc/hostapd/hostapd.conf.intern
 sudo cp /etc/hostapd/hostapd.conf.intern /etc/hostapd/hostapd.conf
 #sudo cp /etc/network/interfaces.intern /etc/network/interfaces
@@ -90,6 +94,9 @@ sudo cp /etc/dnsmasq.conf.intern /etc/dnsmasq.conf
 #sudo cp /etc/sysctl.conf.intern /etc/sysctl.conf
 #sudo  sed -i 's/denyinterfaces.*$/denyinterfaces wlan0/g' /etc/dhcpcd.conf
 else
+sudo cp /etc/dhcpcd.conf.usb /etc/dhcpcd.conf
+sudo service dhcpcd restart
+sudo ifconfig wlan1 1.1.1.1
 # setting up p2p-wlan
 mac="`sudo /sbin/ifconfig eth0 | grep 'ether ' | awk '{ print $2}'`"
 mac2="`echo "$mac" | sed 's/\://g'`"
@@ -143,7 +150,6 @@ sudo  sed -i 's/interface p2p-wlan0.*$/interface '$p2pinterface'/g' /etc/dhcpcd.
 sudo  sed -i 's/interface=p2p-wlan0.*$/interface='$p2pinterface'/g' /etc/dnsmasq.conf.usb
 sudo  sed -i 's/sudo wpa_cli -ip2p-wlan0.*$/sudo wpa_cli -i'$p2pinterface' wps_pin any '$n1$n2$n3'00000/g' /opt/lazycast/allnew.sh
 sudo ifconfig $p2pinterface 192.168.173.1
-sudo ifconfig wlan1 1.1.1.1
 sudo cp /etc/hostapd/hostapd.conf.usb /etc/hostapd/hostapd.conf
 #sudo cp /etc/network/interfaces.usb /etc/network/interfaces
 sudo cp /etc/dnsmasq.conf.usb /etc/dnsmasq.conf
@@ -156,7 +162,7 @@ sudo /sbin/iptables -t nat -F
 sudo sysctl -w net.ipv4.ip_forward=1
 sudo sysctl -w net.ipv6.conf.all.forwarding=1
 sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE
-sudo server dnsmasq restart
-sudo server hostapd restart
+sudo service dnsmasq start
+sudo service hostapd start
 
-zenity --info --text="GO!" --timeout=8 2> /dev/null  &
+#zenity --info --text="GO!" --timeout=8 2> /dev/null  &

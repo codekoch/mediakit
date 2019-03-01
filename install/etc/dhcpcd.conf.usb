@@ -57,6 +57,4 @@ slaac private
 interface wlan1
     static ip_address=1.1.1.1/24
     nohook wpa_supplicant
-interface p2p-wlan0-0
-    static ip_address=192.168.173.1/24
 

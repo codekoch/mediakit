@@ -1,7 +1,7 @@
 #!/bin/sh
 ## settings: NNN should be set by /etc/init.d/randomWifi.sh
 pin="NNN"
-passwort="mediakit$pin"
+password="mediakit$pin"
 wlanssid="NNN"
 wlanModul1="`ip link show | grep -i 'wlan1' | awk '{print $2}' | sed 's/://g'`"
 lanIP="`sudo /sbin/ifconfig eth0 | grep 'inet' | awk '{ print $2}' | head -1`"
