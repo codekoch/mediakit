@@ -148,7 +148,6 @@ p2pinterface=$(echo "${ain}" | grep "p2p-wl" | grep -v "interface")
 
 sudo  sed -i 's/interface p2p-wlan0.*$/interface '$p2pinterface'/g' /etc/dhcpcd.conf.usb
 sudo  sed -i 's/interface=p2p-wlan0.*$/interface='$p2pinterface'/g' /etc/dnsmasq.conf.usb
-sudo  sed -i 's/sudo wpa_cli -ip2p-wlan0.*$/sudo wpa_cli -i'$p2pinterface' wps_pin any '$n1$n2$n3'00000/g' /opt/lazycast/allnew.sh
 sudo ifconfig $p2pinterface 192.168.173.1
 sudo cp /etc/hostapd/hostapd.conf.usb /etc/hostapd/hostapd.conf
 #sudo cp /etc/network/interfaces.usb /etc/network/interfaces
@@ -156,6 +155,8 @@ sudo cp /etc/dnsmasq.conf.usb /etc/dnsmasq.conf
 #sudo cp /etc/dhcpcd.conf.usb /etc/dhcpcd.conf
 #sudo cp /etc/sysctl.conf.usb /etc/sysctl.conf
 fi
+sudo  sed -i 's/p2pinterface=.*$/p2pinterface="'$p2pinterface'"/g' /opt/lazycast/allnew.sh
+sudo  sed -i 's/wps_pin any.*$/wps_pin any '$n1$n2$n3'00000/g' /opt/lazycast/allnew.sh
 sudo /sbin/iptables -F
 sudo /sbin/iptables -X
 sudo /sbin/iptables -t nat -F
