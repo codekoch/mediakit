@@ -63,7 +63,7 @@ mk     ALL=(ALL)       NOPASSWD:/usr/sbin/udhcpd
 mk     ALL=(ALL)       NOPASSWD:/usr/sbin/service dnsmaq restart
 mk     ALL=(ALL)       NOPASSWD:/opt/lazycast/allnew.sh
 mk     ALL=(ALL)       NOPASSWD:/usr/bin/vlc
-
+mk     ALL=(ALL)       NOPASSWD:/sbin/restoreP2PWlan.sh
 
 # Allow members of group sudo to execute any command
 %sudo	ALL=(ALL:ALL) ALL

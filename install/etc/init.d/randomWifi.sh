@@ -16,6 +16,9 @@ sudo  sed -i 's/wpa_passphrase=.*$/wpa_passphrase=mediakit'$n1$n2$n3'/g' /etc/ho
 sudo  sed -i 's/wpa_passphrase=.*$/wpa_passphrase=mediakit'$n1$n2$n3'/g' /etc/hostapd/hostapd.conf.intern
 sudo  sed -i 's/pin=.*$/pin="'$n1$n2$n3'"/g' /etc/init.d/info.sh
 
+# stop dnsmasq and hosapd
+sudo service dnsmasq stop
+sudo service hostapd stop
 # set ssid from eth0 mac adress
 mac="`sudo /sbin/ifconfig eth0 | grep 'ether ' | awk '{ print $2}'`"
 mac2="`echo "$mac" | sed 's/\://g'`"
@@ -45,6 +48,7 @@ else
 ### 2 detected --> use usb wlan (wlan1) device
  sudo cp /etc/dhcpcd.conf.usb /etc/dhcpcd.conf
  sudo service dhcpcd restart
+ sudo ifconfig wlan1 1.1.1.1
  while [ -z $ipset ]; do
   ipset="`sudo ifconfig | grep -i 'inet 1.1.1.1' | awk '{print $2}'` "
  done

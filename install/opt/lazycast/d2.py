@@ -23,7 +23,7 @@ import time
 from time import sleep
 import sys
 ##################### Settings #####################
-player_select = 0
+player_select = 2
 # 0: non-RPi systems. (using vlc)
 # 1: player1 has lower latency.
 # 2: player2 handles still images and sound better.
