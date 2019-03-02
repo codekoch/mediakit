@@ -54,12 +54,12 @@ echo $p2pinterface
 
 #sudo  sed -i 's/interface=p2p-wlan.*$/interface='$p2pinterface'/g' /etc/dnsmasq.conf
 #sudo service dnsmasq restart
-#sudo ifconfig $p2pinterface 192.168.173.1
-#printf "start	192.168.173.80\n">udhcpd.conf
-#printf "end	192.168.173.80\n">>udhcpd.conf
-#printf "interface	$p2pinterface\n">>udhcpd.conf
-#printf "option subnet 255.255.255.0\n">>udhcpd.conf
-#printf "option lease 60">>udhcpd.conf
+sudo ifconfig $p2pinterface 192.168.173.1
+printf "start	192.168.173.80\n">udhcpd.conf
+printf "end	192.168.173.80\n">>udhcpd.conf
+printf "interface	$p2pinterface\n">>udhcpd.conf
+printf "option subnet 255.255.255.0\n">>udhcpd.conf
+printf "option lease 60">>udhcpd.conf
 sleep 3
 #sudo udhcpd ./udhcpd.conf 
 echo "The display is ready"
