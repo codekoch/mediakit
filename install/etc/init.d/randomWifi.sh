@@ -19,6 +19,10 @@ sudo  sed -i 's/pin=.*$/pin="'$n1$n2$n3'"/g' /etc/init.d/info.sh
 # stop dnsmasq and hosapd
 sudo service dnsmasq stop
 sudo service hostapd stop
+echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev" > /etc/wpa_supplicant/wpa_supplicant.conf
+echo "update_config=1" >> /etc/wpa_supplicant/wpa_supplicant.conf
+echo "" > /var/lib/misc/dnsmasq.leases
+
 # set ssid from eth0 mac adress
 mac="`sudo /sbin/ifconfig eth0 | grep 'ether ' | awk '{ print $2}'`"
 mac2="`echo "$mac" | sed 's/\://g'`"
