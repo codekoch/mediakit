@@ -12,6 +12,9 @@ then
         echo "already on"
 
 else
+        echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev" > /etc/wpa_supplicant/wpa_supplicant.conf
+        echo "update_config=1" >> /etc/wpa_supplicant/wpa_supplicant.conf
+        echo "" > /var/lib/misc/dnsmasq.leases
         sudo wpa_cli p2p_find type=progessive
         sudo wpa_cli set device_name $wlanssid
         sudo wpa_cli set device_type 7-0050F204-1
