@@ -18,6 +18,7 @@ import socket
 import fcntl, os
 import errno
 import threading
+import subprocess
 from threading import Thread
 import time
 from time import sleep
@@ -58,8 +59,12 @@ idrsock_address = ('127.0.0.1', 0)
 idrsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 idrsock.bind(idrsock_address)
 addr, idrsockport = idrsock.getsockname()
-print "listening..."
 data = (sock.recv(1000))
+output = subprocess.check_output("amixer cget numid=3 | grep -i ': values=' | awk '{print$2}' | sed 's/values=//g'", shell=Tr$
+if int(output) == 2:
+    sound_output_select = 0
+else:
+    sound_output_select = 1
 print "---M1--->\n" + data
 s_data = 'RTSP/1.0 200 OK\r\nCSeq: 1\r\n\Public: org.wfa.wfd1.0, SET_PARAMETER, GET_PARAMETER\r\n\r\n'
 print "<--------\n" + s_data

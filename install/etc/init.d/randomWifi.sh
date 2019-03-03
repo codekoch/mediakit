@@ -24,6 +24,7 @@ echo "update_config=1" >> /etc/wpa_supplicant/wpa_supplicant.conf
 echo "" > /var/lib/misc/dnsmasq.leases
 sudo chmod 777 /etc/wpa_supplicant/wpa_supplicant.conf
 sudo chmod 777 /var/lib/misc/dnsmasq.leases
+sudo chmod 777 /opt/lazycast/d2.py
 
 # set ssid from eth0 mac adress
 mac="`sudo /sbin/ifconfig eth0 | grep 'ether ' | awk '{ print $2}'`"
