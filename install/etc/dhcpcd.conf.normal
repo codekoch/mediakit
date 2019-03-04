@@ -55,4 +55,3 @@ slaac private
 #interface eth0
 #fallback static_eth0
 
-

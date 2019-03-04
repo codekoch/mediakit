@@ -54,7 +54,7 @@ slaac private
 # fallback to static profile on eth0
 #interface eth0
 #fallback static_eth0
-#interface wlan0
-#    static ip_address=1.1.1.1/24
-#interface p2p-wlan0-0
-#    static ip_address=192.168.173.1/24
+interface wlan0
+    static ip_address=1.1.1.1/24
+    nohook wpa_supplicant
+

@@ -65,6 +65,8 @@ mk     ALL=(ALL)       NOPASSWD:/opt/lazycast/allnew.sh
 mk     ALL=(ALL)       NOPASSWD:/usr/bin/vlc
 mk     ALL=(ALL)       NOPASSWD:/sbin/restoreP2PWlan.sh
 mk     ALL=(ALL)       NOPASSWD:/bin/sed
+mk     ALL=(ALL)       NOPASSWD:/sbin/stopHotspot.sh
+mk     ALL=(ALL)       NOPASSWD:/sbin/startHotspot.sh
 
 # Allow members of group sudo to execute any command
 %sudo	ALL=(ALL:ALL) ALL

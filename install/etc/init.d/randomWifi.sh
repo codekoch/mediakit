@@ -1,13 +1,4 @@
 #!/bin/sh
-### BEGIN INIT INFO
-# Provides:          Für welches Programm ist das Script?
-# Required-Start:    
-# Required-Stop:     
-# Default-Start:     2 3
-# Default-Stop:      
-# Short-Description: Kurze Beschreibung
-# Description:       Längere Beschreibung
-### END INIT INFO
 n1="`shuf -i0-9 -n1`"
 n2="`shuf -i0-9 -n1`"
 n3="`shuf -i0-9 -n1`"
@@ -41,7 +32,7 @@ mac="`sudo /sbin/ifconfig eth0 | grep 'ether ' | awk '{ print $2}'`"
 mac2="`echo "$mac" | sed 's/\://g'`"
 wlanssid="MK-"$mac2
 
-## check if we have two wlan interfaces
+## set wlan ssid
 sudo  sed -i "s/device_name=.*$/device_name=$wlanssid/g" /etc/wpa_supplicant/wpa_supplicant.conf
 
 if [ -z $wlanModul1 ]; then

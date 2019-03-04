@@ -18,14 +18,6 @@ bigpointsize=50
 yp=10
 sudo convert /usr/share/rpd-wallpaper/logo.jpg -fill white -gravity NorthEast -font FreeMono -pointsize 30 -draw "text 0,10 'mediakit "$version"'" /usr/share/rpd-wallpaper/info.jpg
 yp=$(($yp+$pointsize))
-sudo mogrify -fill white -gravity NorthEast -font FreeMono -pointsize $pointsize -draw "text 0,"$yp" 'IP:"$lanIP"(LAN)'" /usr/share/rpd-wallpaper/info.jpg
-yp=$(($yp+$pointsize))
-if [ -z $wlanModul1 ]; then
-sudo mogrify -fill white -gravity NorthEast -font FreeMono -pointsize $pointsize -draw "text 0,"$yp" 'IP:"$wlanIP"(WLAN INTERN)'" /usr/share/rpd-wallpaper/info.jpg
-else
-sudo mogrify -fill white -gravity NorthEast -font FreeMono -pointsize $pointsize -draw "text 0,"$yp" 'IP:"$wlanIP"(WLAN USB)'" /usr/share/rpd-wallpaper/info.jpg
-fi
-yp=$(($yp+$pointsize))
 if [ -z $wlanModul1 ]; then
 sudo mogrify -fill yellow -gravity NorthEast -font FreeMono -pointsize $pointsize -draw "text 0,"$yp" 'WLAN SSID:'" /usr/share/rpd-wallpaper/info.jpg
 else
