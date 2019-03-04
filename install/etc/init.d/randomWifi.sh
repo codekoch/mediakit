@@ -56,11 +56,9 @@ else
 fi
 sudo  sed -i 's/wps_pin any.*$/wps_pin any '$n1$n2$n3'00000/g' /opt/lazycast/all.sh
 sudo  sed -i 's/pin=.*$/pin="'$n1$n2$n3'00000"/g' /opt/lazycast/allnew.sh
-sudo /sbin/iptables -F
-sudo /sbin/iptables -X
-sudo /sbin/iptables -t nat -F
-sudo sysctl -w net.ipv4.ip_forward=1
-sudo sysctl -w net.ipv6.conf.all.forwarding=1
-sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE
-sudo service dnsmasq start
-sudo service hostapd start
+
+
+
+if [ -z $wlanModul1 ]; then
+/sbin/startHotspot.sh
+fi

@@ -37,3 +37,4 @@ yp=$(($yp+$bigpointsize))
 sudo mogrify -fill red -gravity NorthEast -font FreeMono -pointsize $pointsize -draw "text 0,"$yp" 'No LAN Connection!'" /usr/share/rpd-wallpaper/info.jpg
 fi
 
+sudo chmod 777 /usr/share/rpd-wallpaper/info.jpg

@@ -1,6 +1,5 @@
 #!/bin/sh
 # setting up p2p-wlan
-pcmanfm --set-wallpaper="/usr/share/rpd-wallpaper/loading.jpg"
 sudo service dnsmasq stop
 sudo service hostapd stop
 mac="`sudo /sbin/ifconfig eth0 | grep 'ether ' | awk '{ print $2}'`"
@@ -66,5 +65,5 @@ sudo sysctl -w net.ipv6.conf.all.forwarding=1
 sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE
 sudo service dnsmasq start
 sudo service hostapd start
-pcmanfm --set-wallpaper="/usr/share/rpd-wallpaper/info.jpg"
+
 fi
