@@ -15,5 +15,6 @@ echo "Exec=/opt/lazycast/allnew.sh">> /home/mk/.config/autostart/lazycast.deskto
 echo "Type=application ">> /home/mk/.config/autostart/lazycast.desktop
 echo "Terminal=true">> /home/mk/.config/autostart/lazycast.desktop
 chmod 755 /home/mk/.config/autostart/lazycast.desktop
+else
+rm -rf /home/mk/.config/autostart/lazycast.desktop
 fi
-# zenity --info --text="GO!" --timeout=8 2> /dev/null  &

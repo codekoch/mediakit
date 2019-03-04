@@ -60,7 +60,7 @@ idrsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 idrsock.bind(idrsock_address)
 addr, idrsockport = idrsock.getsockname()
 data = (sock.recv(1000))
-output = subprocess.check_output("amixer cget numid=3 | grep -i ': values=' | awk '{print$2}' | sed 's/values=//g'", shell=Tr$
+output = subprocess.check_output("amixer cget numid=3 | grep -i ': values=' | awk '{print$2}' | sed 's/values=//g'", shell=True)
 if int(output) == 2:
     sound_output_select = 0
 else:

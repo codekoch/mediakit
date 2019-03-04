@@ -53,10 +53,4 @@ sudo  sed -i 's/interface=p2p-wlan0.*$/interface='$p2pinterface'/g' /etc/dnsmasq
 #sudo  sed -i 's/sudo wpa_cli -ip2p-wlan0.*$/sudo wpa_cli -i'$p2pinterface' wps_pin any '$pin'00000/g' /opt/lazycast/alln$
 sudo ifconfig $p2pinterface 192.168.173.1
 wlanModul1="`ip link show | grep -i 'wlan1' | awk '{print $2}' | sed 's/://g'`"
-if [ -z $wlanModul1 ]; then
-sudo ifconfig wlan0 1.1.1.1
 sudo service dnsmasq restart
-sudo service hostapd restart
-else
-sudo service dnsmasq restart
-fi
