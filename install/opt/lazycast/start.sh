@@ -1,3 +1,3 @@
 #!/bin/sh
-/sbin/stopHotspot.sh
+sudo /sbin/stopHotspot.sh
 ./allnew.sh

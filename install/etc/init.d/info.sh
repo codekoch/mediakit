@@ -18,19 +18,19 @@ bigpointsize=50
 yp=10
 sudo convert /usr/share/rpd-wallpaper/logo.jpg -fill white -gravity NorthEast -font FreeMono -pointsize 30 -draw "text 0,10 'mediakit "$version"'" /usr/share/rpd-wallpaper/info.jpg
 yp=$(($yp+$pointsize))
-if [ -z $wlanModul1 ]; then
-sudo mogrify -fill yellow -gravity NorthEast -font FreeMono -pointsize $pointsize -draw "text 0,"$yp" 'WLAN SSID:'" /usr/share/rpd-wallpaper/info.jpg
-else
+#if [ -z $wlanModul1 ]; then
+#sudo mogrify -fill yellow -gravity NorthEast -font FreeMono -pointsize $pointsize -draw "text 0,"$yp" 'WLAN SSID:'" /usr/share/rpd-wallpaper/info.jpg
+#else
 sudo mogrify -fill yellow -gravity NorthEast -font FreeMono -pointsize $pointsize -draw "text 0,"$yp" 'WLAN / MIRACAST SSID:" /usr/share/rpd-wallpaper/info.jpg
-fi
+#fi
 yp=$(($yp+$pointsize))
 sudo mogrify -fill yellow -gravity NorthEast -font FreeMono -pointsize $bigpointsize -draw "text 0,"$yp" '"$wlanssid"'" /usr/share/rpd-wallpaper/info.jpg
 yp=$(($yp+$bigpointsize))
 sudo mogrify -fill yellow -gravity NorthEast -font FreeMono -pointsize $bigpointsize -draw "text 0,"$yp" 'KEY:"$password"'" /usr/share/rpd-wallpaper/info.jpg
-if ! [ -z $wlanModul1 ]; then
+#if ! [ -z $wlanModul1 ]; then
 yp=$(($yp+$bigpointsize))
 sudo mogrify -fill yellow -gravity NorthEast -font FreeMono -pointsize $bigpointsize -draw "text 0,"$yp" 'PIN:"$pin"00000'" /usr/share/rpd-wallpaper/info.jpg
-fi
+#fi
 
 if  [ -z $lanIP ]; then
 yp=$(($yp+$bigpointsize))
