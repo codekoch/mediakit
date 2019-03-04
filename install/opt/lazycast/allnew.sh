@@ -5,7 +5,9 @@ while :
 do      
         ipset="`sudo ifconfig | grep -i 'inet 192.168.173.1' | awk '{print $2}'`"
         if [ -z $ipset ]; then
+        pcmanfm --set-wallpaper="/usr/share/rpd-wallpaper/loading.jpg"
         sudo /sbin/restoreP2PWlan.sh
+        pcmanfm --set-wallpaper="/usr/share/rpd-wallpaper/info.jpg"
         fi
         p2pinterface="`sudo ifconfig | grep -i 'p2p-wlan' | awk '{print $1}' | sed 's/://g'`"
         echo "PIN:"     
