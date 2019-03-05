@@ -8,6 +8,9 @@ do
         pcmanfm --set-wallpaper="/usr/share/rpd-wallpaper/loading.jpg"
         sudo /sbin/restoreP2PWlan.sh
         pcmanfm --set-wallpaper="/usr/share/rpd-wallpaper/info.jpg"
+        else
+        echo "" > /var/lib/misc/dnsmasq.leases
+        sudo service dnsmasq restart
         fi
         p2pinterface="`sudo ifconfig | grep -i 'p2p-wlan' | awk '{print $1}' | sed 's/://g'`"
         echo "PIN:"     
