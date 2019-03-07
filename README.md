@@ -3,6 +3,10 @@ http://mediakit.education
 
 Demo: https://youtu.be/1EJf5ur1sM4
 
+Digitale Tafel, Wireless Display, WLAN-Router, Fileserver und PC in Einem für unter 100€:
+
+mediakit 
+
 Digitalisierung von Klassenzimmern -
 
 einfach, unabhängig, zuverlässig, kostengünstig
@@ -16,3 +20,14 @@ Beim mediakit werden diese Gedanken umgesetzt, indem auf freie Software gesetzt 
 Das mediakit ist am Albert-Einstein-Gymnasium Kaarst schon erfolgreich im Einsatz und erfüllt im Unterrichtsalltag viele Funktionen.
 
 Olaf Koch und Dr. Simon Zander
+
+-------------------------------
+Update der RaspberryPi Version:
+
+Login als User pi:
+>git clone https://github.com/codekoch/mediakit --branch RaspberryPi 
+>cd mediakit
+>sudo ./install.sh
+>sudo shutdown -r now
+
+
