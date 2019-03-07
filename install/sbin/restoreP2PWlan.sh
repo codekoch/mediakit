@@ -18,6 +18,9 @@ else
         echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev" > /etc/wpa_supplicant/wpa_supplicant.conf
         echo "update_config=1" >> /etc/wpa_supplicant/wpa_supplicant.conf
         echo "" > /var/lib/misc/dnsmasq.leases
+        sudo wpa_cli p2p_stop_find        
+        sudo wpa_cli p2p_cancel
+        sudo wpa_cli p2p_flush
         sudo wpa_cli p2p_find type=progessive
         sudo wpa_cli set device_name $wlanssid
         sudo wpa_cli set device_type 7-0050F204-1
@@ -40,13 +43,13 @@ else
                 while [ `echo "${ain}" | grep -c "p2p-wl"`  -lt 1 ]
                 do
                         sudo wpa_cli p2p_group_add persistent$perstr freq=5
-                        sleep 2
+                        sleep 1
                         ain="$(sudo wpa_cli interface)"
                         echo "$ain"
                 done
-                sleep 5
-                ain="$(sudo wpa_cli interface)"
-                echo "$ain"
+               sleep 4
+               ain="$(sudo wpa_cli interface)"
+               echo "$ain"
         done
 
 fi
